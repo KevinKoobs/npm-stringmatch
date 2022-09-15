@@ -1,0 +1,36 @@
+{
+  "name": "stringmatch",
+  "version": "0.0.1",
+  "description": "Match two different strings and calculate a score from them. Use multipliers to finetune the score and bring your own threshold to see if the two strings match enough",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "version": "git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KevinKoobs/npm-stringmatch.git"
+  },
+  "keywords": [
+    "string",
+    "match"
+  ],
+  "author": "Kevin Koobs",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KevinKoobs/npm-stringmatch/issues"
+  },
+  "homepage": "https://github.com/KevinKoobs/npm-stringmatch#readme",
+  "dependencies": {
+    "jaro-winkler": "^0.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.18",
+    "typescript": "^4.8.3"
+  }
+}
