@@ -135,6 +135,11 @@ function calculateScores(slug: any, name: any, substringMultiplier = 1, substrin
         return scoreObject;
     })
 
+    const compareSubstringsResult = compareSubstrings(name, slug)
+    if (compareSubstringsResult?.foundMatch === true) {
+        updateScoreObject(compareSubstringsResult?.substringLength, 8);
+    }
+
     return scoreObject
 }
 
@@ -183,24 +188,51 @@ function buildNameWithFirstLetterAndOneOtherName(nameArray = [], name = '', inde
     return nameWithFirstLetterAndOneOtherNameAsString;
 }
 
-function compareSubstrings(slug: string, name: string) {
-    const shortestNameStringLength = name.length > name.length ? name.length : name.length;
+interface CompareSubstringsResult {
+    foundMatch: boolean;
+    substringLength: number;
+}
+
+function compareSubstrings(slug: string, name: string): CompareSubstringsResult {
+    const shortestNameStringLength = name.length > slug.length ? slug.length : name.length;
+    const shortestName = name.length > slug.length ? slug : name;
+    const longestName = name.length > slug.length ? name : slug;
     const minSubstringLength = 3;
+    let foundMatch = false;
 
     for (var substringLength = shortestNameStringLength; substringLength >= minSubstringLength; substringLength--) {
-        for (let index: number = 0; index <= (name.length - substringLength); index++) {
-            let substring = slug.toLowerCase().substr(index, substringLength);
-            let result = name.toString().toLowerCase().indexOf(substring);
+        for (let index: number = 0; index <= (longestName.length - substringLength); index++) {
+            let substring = shortestName.toLowerCase().substr(index, substringLength);
+            let result = longestName.toString().toLowerCase().indexOf(substring);
             if (result !== -1) {
+                foundMatch = true;
                 return {
                     foundMatch: true,
                     substringLength: substringLength
                 };
             }
         }
-        return {
-            foundMatch: false
+    }
+
+    if (!foundMatch) {
+        for (var substringLength = 0; substringLength <= shortestNameStringLength; substringLength++) {
+            for (let index: number = 0; index <= (longestName.length - substringLength); index++) {
+                let substring = shortestName.toLowerCase().substr(index, substringLength);
+                let result = longestName.toString().toLowerCase().indexOf(substring);
+                if (result !== -1) {
+                    foundMatch = true;
+                    return {
+                        foundMatch: true,
+                        substringLength: substringLength
+                    };
+                }
+            }
         }
+    }
+
+    return {
+        foundMatch: false,
+        substringLength: 0
     }
 }
 
