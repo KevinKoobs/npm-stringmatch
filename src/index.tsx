@@ -26,7 +26,6 @@ function calculateScores(slug: any, name: any, substringMultiplier = 1, substrin
     scoreObject.bonusPoints = 0;
     scoreObject.distanceScore = distance(slug, name);
 
-    console.log('-----------');
     name = name.split(' ').join('');
     const fullName = name;
 
@@ -50,7 +49,6 @@ function calculateScores(slug: any, name: any, substringMultiplier = 1, substrin
     }
 
 
-    console.log('Checking firstLetterOfFirstNameAndLastName');
     // Check for first letter in last name and/or first letter in first name in combination with first/lastname
     const firstLetterOfFirstNameAndLastName = nameArray[0].slice(0, 1) + nameArray[nameArray.length - 1];
     if (slug == firstLetterOfFirstNameAndLastName && !foundMatch) {
@@ -58,7 +56,6 @@ function calculateScores(slug: any, name: any, substringMultiplier = 1, substrin
         return scoreObject;
     }
 
-    console.log('Checking firstNameAndFirstLetterOfLastName');
 
     const firstNameAndFirstLetterOfLastName = nameArray[0] + nameArray[nameArray.length - 1].slice(0, 1);
     if (slug == firstNameAndFirstLetterOfLastName && !foundMatch) {
@@ -67,7 +64,6 @@ function calculateScores(slug: any, name: any, substringMultiplier = 1, substrin
     }
 
     // Check if the slug equals one of the entered names but not only last name
-    console.log('Checking William');
     nameArray.map((name: string, index: number) => {
         if (name !== slug || index === nameArray.length - 1) return
         updateScoreObject(fullName.length, 4)
@@ -76,7 +72,6 @@ function calculateScores(slug: any, name: any, substringMultiplier = 1, substrin
 
     // Add every other name to the current name 
     // E.g. Name = William Jonathan Bracken, build 'WilliamJonathan', 'WilliamBracken', 'JonathanWilliam', 'JonathanBracken' etc.
-    console.log('Checking WilliamBracken');
     nameArray.map((name: string) => {
         nameArray.map((nameToAdd: string) => {
             let nameToTest = name + nameToAdd;
@@ -98,7 +93,6 @@ function calculateScores(slug: any, name: any, substringMultiplier = 1, substrin
     // Do not award points for 'WJB', 'WillJBracken'
 
     // This checks for WJonathanBracken, WilliamJBracken and WilliamJonathanB
-    console.log('Checking WJonathanBracken');
     nameArray.map((name: string, index: number) => {
         let newNameToCheck = buildFullNameWithOneShortenedName(nameArray, name, index);
         if (slug !== newNameToCheck) return;
@@ -108,7 +102,6 @@ function calculateScores(slug: any, name: any, substringMultiplier = 1, substrin
     })
 
     // This checks for WJBracken, WilliamJB, WJonathanB
-    console.log('Checking WJBracken');
     nameArray.map((name: string, index: number) => {
         let newNameToCheck = buildFullNameWithMultipleShortenedNames(nameArray, name, index);
         if (slug !== newNameToCheck) return;
@@ -118,7 +111,6 @@ function calculateScores(slug: any, name: any, substringMultiplier = 1, substrin
     })
 
     // This checks for WBracken, JBracken, WilliamJ, WilliamB, WJonathan, JonathanB
-    console.log('Checking WBracken');
     nameArray.map((name: string, index: number) => {
         let newNameToCheck = buildNameWithFirstLetterAndOneOtherName(nameArray, name, index);
         if (slug !== newNameToCheck) return;
@@ -127,7 +119,6 @@ function calculateScores(slug: any, name: any, substringMultiplier = 1, substrin
     })
 
     // This checks for WillBracken, JohnBracken, WillJohnBracken (full name match + partial other names)
-    console.log('Checking WillBracken');
     nameArray.map((name: string, index: number) => {
         if (name.length < 3) return;
 
