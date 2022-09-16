@@ -15,7 +15,7 @@ function updateScoreObject(length: number, factor: number) {
     scoreObject.score = (scoreObject.distanceScore * scoreObject.bonusPoints * scoreObject.multiplier) / 5;
 }
 
-function calculateScores(slug: any, name: any, substringMultiplier = 1, substringAddition = 1) {
+function calculateScores(slug: string, name: string, substringMultiplier: number = 1, substringAddition: number = 1) {
     name = name.replace('-', ' ');
     let nameArray = name.split(' ');
     let foundMatch = false;
@@ -143,11 +143,11 @@ function calculateScores(slug: any, name: any, substringMultiplier = 1, substrin
     return scoreObject
 }
 
-function buildFullNameWithOneShortenedName(nameArray = [], name = '', index = 0) {
+function buildFullNameWithOneShortenedName(nameArray: any = [], name = '', index = 0) {
     if (nameArray.length === 0 || name === '') return;
     let firstLetter = name.slice(0, 1);
     let FullNameWithOneShortenedName: string[] = [firstLetter];
-    nameArray.map((nameToAdd, indexOfNamesToAdd) => {
+    nameArray.map((nameToAdd: string, indexOfNamesToAdd: number) => {
         if (index !== indexOfNamesToAdd) {
             FullNameWithOneShortenedName.splice(indexOfNamesToAdd, 0, nameToAdd);
         }
@@ -158,7 +158,7 @@ function buildFullNameWithOneShortenedName(nameArray = [], name = '', index = 0)
     return FullNameWithOneShortenedNameAsString;
 }
 
-function buildFullNameWithMultipleShortenedNames(nameArray = [], name = '', index = 0) {
+function buildFullNameWithMultipleShortenedNames(nameArray: any = [], name = '', index = 0) {
     if (nameArray.length === 0 || name === '') return;
 
     let fullNameWithMultipleShortenedNames: string[] = [name];
@@ -173,12 +173,12 @@ function buildFullNameWithMultipleShortenedNames(nameArray = [], name = '', inde
     return fullNameWithMultipleShortenedNamesAsString;
 }
 
-function buildNameWithFirstLetterAndOneOtherName(nameArray = [], name = '', index = 0) {
+function buildNameWithFirstLetterAndOneOtherName(nameArray: any = [], name = '', index = 0) {
     if (nameArray.length === 0 || name === '') return;
 
     const firstLetter = name.slice(0, 1);
     let nameWithFirstLetterAndOneOtherName = [firstLetter];
-    nameArray.map((nameToAdd, indexOfNameToAdd) => {
+    nameArray.map((nameToAdd: string, indexOfNameToAdd: number) => {
         if (index !== indexOfNameToAdd) {
             nameWithFirstLetterAndOneOtherName.splice(indexOfNameToAdd, 0, nameToAdd);
         }
