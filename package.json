@@ -1,6 +1,6 @@
 {
   "name": "@kevinkoobs/stringmatch",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Match two different strings and calculate a score from them. Use multipliers to finetune the score and bring your own threshold to see if the two strings match enough",
   "main": "./lib/index.jsx",
   "scripts": {
