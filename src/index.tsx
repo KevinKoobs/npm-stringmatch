@@ -1,4 +1,5 @@
 const distance = require('jaro-winkler');
+import type { CompareSubstringsResult } from './interfaces/CompareSubstringResult';
 
 const scoreObject = {
     score: 0,
@@ -186,11 +187,6 @@ function buildNameWithFirstLetterAndOneOtherName(nameArray: any = [], name = '',
 
     const nameWithFirstLetterAndOneOtherNameAsString: string = nameWithFirstLetterAndOneOtherName.join().replace(/[,]/g, '');
     return nameWithFirstLetterAndOneOtherNameAsString;
-}
-
-interface CompareSubstringsResult {
-    foundMatch: boolean;
-    substringLength: number;
 }
 
 function compareSubstrings(slug: string, name: string): CompareSubstringsResult {
