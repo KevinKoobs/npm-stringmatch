@@ -21,7 +21,7 @@ console.log(stringMatch.compareStrings('KevinKoobs', 'Kevin Koobs', 1, 1));
 
 The function `compareStrings()` takes in four arguments. The first two are the strings you want to compare, the last two are the multiplier and addition. So the function looks like this:
 ```ts
-compareSubstrings(string1: string, string2: string, substringMultiplier: number, substringAddition: number);
+compareStrings(string1: string, string2: string, substringMultiplier: number, substringAddition: number);
 ```
 The multiplier and addition default to `1` and works as follows:
 
@@ -31,7 +31,7 @@ Example:
 
 **input**
 ```ts
-compareSubstrings('KevinKoobs', 'Kevin Koobs', 2.5, 1.5);
+compareStrings('KevinKoobs', 'Kevin Koobs', 2.5, 1.5);
 ```
 **output**
 ```ts

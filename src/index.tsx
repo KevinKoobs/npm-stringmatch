@@ -135,41 +135,6 @@ function calculateScores(slug: any, name: any, substringMultiplier = 1, substrin
         return scoreObject;
     })
 
-    /* Situations that need to pass but don't right now
-        SubstringMultiplier = 0.3
-        SubstringAddition = 0.75
-        Threshold = 2.5
-
-        Name                            Slug                    Score
-        Aaron Randolph Love             LoveA1                  0.33508
-        Johnny Alexander Duarte         DuarteJohnnyA           0.54638
-        Ren Carlo Ortiz Luis Dizon      Rcdizon                 0.55708
-        Dayo Peter Olaogun              OlaogunD                0.49074
-        Gerardo Montes Nunez            GerardNunez             0.89181
-        James Andrew Turner             Turnerja                0.49605
-        Paul Fragala                    FragalaP                0.70039
-        Rudwaan Wharwood Abdul Raheem   R. Wharwood             0.65900
-        Rudwaan Wharwood Abdul Raheem   Rudwaan. W              0.85517
-        Rafael Alberto Figuora Faria    Rafigueroa              0.66494
-        Rafael Alberto Figuora Faria    RGigueroa               0.48563
-    */
-
-    // Ignore possible silent 'h' /(.{1,})[aeiou]h(.{1,})/g, '\\1\\2'
-
-    /* Situations that might pass, need feedback
-        Name                        Slug            Score
-        Carrie Lynn Guthrie         CarrieL         0.87368
-        Russel Eugene Jenkins       RussJenkins     0.65151
-        Jonathan James May          JonMay          0.63703
-        David Armijo                David R. Armijo 0.94848
-    */
-
-    /*
-        Situations that pass, but might not be good
-        Name                                Slug            Score
-        Oswald Anwar Crisologo Hellemun     Hellemun        2.86301
-    */
-
     return scoreObject
 }
 
