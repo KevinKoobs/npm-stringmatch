@@ -9,8 +9,8 @@ const scoreObject = {
     multiplier: 0
 }
 
-function updateScoreObject(length: any, factor: any) {
-    scoreObject.multiplier = parseFloat(scoreObject.substringMultiplier.toString()) + ((scoreObject.substringMultiplier * parseInt(length)) * parseInt(factor));
+function updateScoreObject(length: number, factor: number) {
+    scoreObject.multiplier = parseFloat(scoreObject.substringMultiplier.toString()) + ((scoreObject.substringMultiplier * length) * factor);
     scoreObject.bonusPoints = scoreObject.bonusPoints + scoreObject.substringAddition + (scoreObject.substringMultiplier * length);
     scoreObject.score = (scoreObject.distanceScore * scoreObject.bonusPoints * scoreObject.multiplier) / 5;
 }
@@ -280,7 +280,7 @@ function compareSubstringFromName(name: string, slug: string) {
 
 export default function sanitizeInput(string1: string, string2: string, substringMultiplier: number, substringAddition: number) {
     string1 = string1.toLowerCase().replace(' ', '').replace(/[^a-z]/g, '');
-    string2 = string2.toLowerCase().replace(' ', '').replace(/[^a-z]/g, '');
+    string2 = string2.toLowerCase();
     substringMultiplier = parseFloat(substringMultiplier.toString());
     substringAddition = parseFloat(substringAddition.toString());
 

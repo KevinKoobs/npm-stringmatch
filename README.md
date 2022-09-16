@@ -5,6 +5,8 @@ Package to compare two strings and build a score for the similarity between the 
 
 The package relies on the [jaro-winkler](https://www.npmjs.com/package/jaro-winkler) package for a base calculation of distance between the two strings. After the calculation you can come up with an arbitrary threshold number to see if the strings match enough or one of them needs a change. 
 
+
+
 ### **Installation**
 Just 
 ``` npm install @kevinkoobs/stringmatch```
