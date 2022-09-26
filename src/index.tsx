@@ -137,7 +137,6 @@ function calculateScores(slug: string, name: string, substringMultiplier: number
     })
 
     const compareSubstringsResult = compareSubstrings(name, slug)
-    console.log(compareSubstringsResult);
 
     if (compareSubstringsResult?.foundMatch === true) {
         updateScoreObject(compareSubstringsResult?.substringLength, 8);
@@ -288,7 +287,7 @@ function sanitizeInput(string1: string, string2: string, substringMultiplier: nu
 }
 
 
-function compareStrings(string1: string, string2: string, substringMultiplier: number = 1, substringAddition: number = 1) {
+export default function compareStrings(string1: string, string2: string, substringMultiplier: number = 1, substringAddition: number = 1) {
     const variables = sanitizeInput(string1, string2, substringMultiplier, substringAddition);
     const silentHMatch = /(?<=[aeiout]h)./gi;
 
@@ -312,5 +311,3 @@ function compareStrings(string1: string, string2: string, substringMultiplier: n
 
     return scoreCalculation;
 }
-
-module.exports = { compareStrings };
