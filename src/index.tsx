@@ -287,7 +287,7 @@ function sanitizeInput(string1: string, string2: string, substringMultiplier: nu
 }
 
 
-export default function compareStrings(string1: string, string2: string, substringMultiplier: number = 1, substringAddition: number = 1) {
+export function compareStrings(string1: string, string2: string, substringMultiplier: number = 1, substringAddition: number = 1) {
     const variables = sanitizeInput(string1, string2, substringMultiplier, substringAddition);
     const silentHMatch = /(?<=[aeiout]h)./gi;
 
