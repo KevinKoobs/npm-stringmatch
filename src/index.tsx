@@ -137,6 +137,8 @@ function calculateScores(slug: string, name: string, substringMultiplier: number
     })
 
     const compareSubstringsResult = compareSubstrings(name, slug)
+    console.log(compareSubstringsResult);
+
     if (compareSubstringsResult?.foundMatch === true) {
         updateScoreObject(compareSubstringsResult?.substringLength, 8);
     }
@@ -271,7 +273,7 @@ function compareSubstringFromName(name: string, slug: string) {
 
 }
 
-export default function sanitizeInput(string1: string, string2: string, substringMultiplier: number, substringAddition: number) {
+function sanitizeInput(string1: string, string2: string, substringMultiplier: number, substringAddition: number) {
     string1 = string1.toLowerCase().replace(' ', '').replace(/[^a-z]/g, '');
     string2 = string2.toLowerCase();
     substringMultiplier = parseFloat(substringMultiplier.toString());
