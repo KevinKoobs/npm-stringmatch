@@ -30,7 +30,7 @@ function calculateScores(slug: string, name: string, substringMultiplier: number
     name = name.split(' ').join('');
     const fullName = name;
 
-    /* Check on: 
+    /* Check on:
         -> Full name match with spaces removed (e.g. 'KevinKoobs' & 'Kevin Koobs') returns true
         -> Substring match (e.g. 'KevinK' & 'Kevin Koobs') returns 'KevinK'
         -> Per name match (e.g. 'KevinKoobs92' and ['Kevin', 'Koobs']) returns ['Kevin', 'Koobs']
@@ -71,7 +71,7 @@ function calculateScores(slug: string, name: string, substringMultiplier: number
         return scoreObject
     })
 
-    // Add every other name to the current name 
+    // Add every other name to the current name
     // E.g. Name = William Jonathan Bracken, build 'WilliamJonathan', 'WilliamBracken', 'JonathanWilliam', 'JonathanBracken' etc.
     nameArray.map((name: string) => {
         nameArray.map((nameToAdd: string) => {
@@ -289,7 +289,7 @@ function sanitizeInput(string1: string, string2: string, substringMultiplier: nu
 
 export function compareStrings(string1: string, string2: string, substringMultiplier: number = 1, substringAddition: number = 1) {
     const variables = sanitizeInput(string1, string2, substringMultiplier, substringAddition);
-    const silentHMatch = /(?<=[aeiout]h)./gi;
+    const silentHMatch = /.[aeiout]h/i;
 
     let scoreCalculation = calculateScores(variables.string1, variables.string2, variables.substringMultiplier, variables.substringAddition);
     if (scoreCalculation.score === 0) {
